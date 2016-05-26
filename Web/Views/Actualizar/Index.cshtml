@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#actualizar").click(function () {
+            for (var i = 0; i < @((int)ViewBag.CantidadDeProductos) / 100; )
+            {
+                
+                function test(a){
+                    $.get("Actualizar/Actualizar", { offset: (a*100) }, function () {
+                        document.getElementById("pagina-"+a).innerHTML = "OK";
+                    })
+                }    
+                test(i);
+                i++
+            }
+        });
+    })
+</script>
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Productos a actualizar: @ViewBag.CantidadDeProductos</h2>
+    </div>
+</div>
+<div class="row">
+    @for (var i = 0; i < (int)ViewBag.CantidadDeProductos / 100; i++)
+    {
+        <div class="col-md-2">
+            <h3>Pagina @i</h3><div id="pagina-@i">no actualizada</div>
+        </div>
+    }
+    <div class="col-md-6">
+        <button type="button" id="actualizar">Actualizar</button>
+    </div>
+
+</div>

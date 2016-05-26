@@ -7,8 +7,10 @@ namespace Actualizador
     {
 
         [OperationContract]
-        int Actualizar();
+        bool Actualizar(int offset);
 
+        [OperationContract]
+        int CantidadDeProductos();
     }
 
 }

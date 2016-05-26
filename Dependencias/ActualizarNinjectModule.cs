@@ -12,7 +12,7 @@ namespace Dependencias
         {
             Bind<DbContext>().To<InflacionDbContext>().InScope(ctx => OperationContext.Current);
             Bind<IRepositorio>().To<RepositorioEF>().InScope(ctx => OperationContext.Current);
-            Bind<IServicioActualizar>().To<ServicioActualizar>().InSingletonScope();
+            Bind<IServicioActualizar>().To<ServicioActualizar>();
         }
     }
 }

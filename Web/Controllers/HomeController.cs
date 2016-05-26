@@ -9,10 +9,8 @@ namespace Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IServicioActualizar repositorio;
-        public HomeController(IServicioActualizar repositorio)
+        public HomeController()
         {
-            this.repositorio = repositorio;
         }
 
         public ActionResult Index()
@@ -32,11 +30,6 @@ namespace Web.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
-
-        public int Actualizar()
-        {
-            return repositorio.Actualizar();
         }
     }
 }

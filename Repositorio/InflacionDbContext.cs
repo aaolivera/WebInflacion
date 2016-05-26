@@ -12,7 +12,7 @@ namespace Repositorio
 
         public InflacionDbContext() : base("Inflaciondb")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<InflacionDbContext, Migrations.Configuration>("Inflaciondb"));
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<InflacionDbContext, Migrations.Configuration>("Inflaciondb"));
         }
         //public BCBADbContext(string connStringName) : base(connStringName) { }
         static InflacionDbContext()
