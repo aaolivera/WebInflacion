@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entidades\Marca.cs" />
     <Compile Include="Entidades\Material.cs" />
     <Compile Include="Entidades\Precio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

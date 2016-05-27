@@ -4,19 +4,25 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#actualizar").click(function () {
-            for (var i = 0; i < @((int)ViewBag.CantidadDeProductos) / 100; )
-            {
-                
-                function test(a){
-                    $.get("Actualizar/Actualizar", { offset: (a*100) }, function () {
-                        document.getElementById("pagina-"+a).innerHTML = "OK";
-                    })
-                }    
-                test(i);
-                i++
-            }
+            test(0);
         });
-    })
+    });
+    function test(a){
+        if(a == @((int)ViewBag.CantidadDeProductos / 100-1)) return 1;
+        var b = a + 1;
+        setTimeout(function() {test(b)},10000);
+
+        document.getElementById("pagina-"+a).innerHTML = "procesando";
+        $.get("Actualizar/Actualizar", { offset: (a*100) }, function (respuesta) {
+            if(respuesta){
+                document.getElementById("pagina-"+a).innerHTML = "OK";
+            }else{
+                document.getElementById("pagina-"+a).innerHTML = "error";
+            }
+            
+        })
+    }
+
 </script>
 
 

@@ -64,9 +64,9 @@
     <Compile Include="EntidadReferenciadaException.cs" />
     <Compile Include="InflacionDbContext.cs" />
     <Compile Include="IRepositorio.cs" />
-    <Compile Include="Migrations\201605260230180_db.cs" />
-    <Compile Include="Migrations\201605260230180_db.Designer.cs">
-      <DependentUpon>201605260230180_db.cs</DependentUpon>
+    <Compile Include="Migrations\201605270009463_db.cs" />
+    <Compile Include="Migrations\201605270009463_db.Designer.cs">
+      <DependentUpon>201605270009463_db.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="RepositorioEF.cs" />
@@ -83,8 +83,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605260230180_db.resx">
-      <DependentUpon>201605260230180_db.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605270009463_db.resx">
+      <DependentUpon>201605270009463_db.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
