@@ -10,10 +10,10 @@
     function test(a){
         if(a == @((int)ViewBag.CantidadDeProductos / 100-1)) return 1;
         var b = a + 1;
-        setTimeout(function() {test(b)},10000);
+        setTimeout(function() {test(b)},2000);
 
         document.getElementById("pagina-"+a).innerHTML = "procesando";
-        $.get("Actualizar/Actualizar", { offset: (a*100) }, function (respuesta) {
+        $.get("@Url.Action("Actualizar")", { offset: (a*100) }, function (respuesta) {
             if(respuesta){
                 document.getElementById("pagina-"+a).innerHTML = "OK";
             }else{

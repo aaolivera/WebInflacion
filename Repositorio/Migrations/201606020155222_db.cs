@@ -11,9 +11,9 @@ namespace Repositorio.Migrations
                 "dbo.Material",
                 c => new
                     {
-                        Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
-                        Nombre = c.String(unicode: false),
-                        Marca = c.String(unicode: false),
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Nombre = c.String(),
+                        Marca = c.String(),
                         Activo = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
@@ -23,10 +23,10 @@ namespace Repositorio.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Fecha = c.DateTime(nullable: false, precision: 0),
+                        Fecha = c.DateTime(nullable: false),
                         PrecioMinimo = c.Decimal(nullable: false, precision: 18, scale: 2),
                         PrecioMaximo = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Material_Id = c.String(maxLength: 128, storeType: "nvarchar"),
+                        Material_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Material", t => t.Material_Id)

@@ -6,22 +6,22 @@ using System.Linq;
 
 namespace Repositorio
 {
-    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
+    //[DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class InflacionDbContext : DbContext
     {
 
         public InflacionDbContext() : base("Inflaciondb")
         {
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<InflacionDbContext, Migrations.Configuration>("Inflaciondb"));
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<InflacionDbContext, Migrations.Configuration>("Inflaciondb"));
         }
         //public BCBADbContext(string connStringName) : base(connStringName) { }
-        static InflacionDbContext()
-        {
-            // static constructors are guaranteed to only fire once per application.
-            // I do this here instead of App_Start so I can avoid including EF
-            // in my MVC project (I use UnitOfWork/Repository pattern instead)
-            DbConfiguration.SetConfiguration(new MySql.Data.Entity.MySqlEFConfiguration());
-        }
+        //static InflacionDbContext()
+        //{
+        //    // static constructors are guaranteed to only fire once per application.
+        //    // I do this here instead of App_Start so I can avoid including EF
+        //    // in my MVC project (I use UnitOfWork/Repository pattern instead)
+        //    DbConfiguration.SetConfiguration(new MySql.Data.Entity.MySqlEFConfiguration());
+        //}
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
