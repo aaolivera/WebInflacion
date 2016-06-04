@@ -22,3 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+ul.ui-autocomplete {
+    font-size: 12px;
+}

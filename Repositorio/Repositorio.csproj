@@ -56,10 +56,6 @@
     <Compile Include="EntidadReferenciadaException.cs" />
     <Compile Include="InflacionDbContext.cs" />
     <Compile Include="IRepositorio.cs" />
-    <Compile Include="Migrations\201606020155222_db.cs" />
-    <Compile Include="Migrations\201606020155222_db.Designer.cs">
-      <DependentUpon>201606020155222_db.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="RepositorioEF.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,11 +71,6 @@
       <Project>{e1fa824a-1add-437c-aa46-93d976feef72}</Project>
       <Name>Dominio</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606020155222_db.resx">
-      <DependentUpon>201606020155222_db.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -140,87 +140,6 @@ namespace Repositorio
             return resultado.Take(maxResultados).ToList();
         }
 
-        //public ListaPaginada<TProyeccion> Listar<TEntidad, TKey, TProyeccion>(Expression<Func<TProyeccion, TKey>> funcProyeccion, Expression<Func<TEntidad, TKey>> funcEntidad, Paginacion paginacion, Expression<Func<TEntidad, bool>> filtroEntidad = null, Expression<Func<TProyeccion, bool>> filtroProyeccion = null)
-        //    where TEntidad : class
-        //    where TProyeccion : class
-        //{
-        //    IQueryable<TEntidad> entidades = Set<TEntidad>();
-        //    IQueryable<TProyeccion> proyecciones = Set<TProyeccion>();
-        //    if (filtroEntidad != null)
-        //    {
-        //        entidades = entidades.Where(filtroEntidad);
-        //    }
-        //    proyecciones = entidades.Join(proyecciones, funcEntidad, funcProyeccion, (x, y) => y);
-
-        //    if (filtroProyeccion != null)
-        //    {
-        //        proyecciones = proyecciones.Where(filtroProyeccion);
-        //    }
-
-        //    int itemsTotales = proyecciones.Count();
-
-        //    if (paginacion.OrdenarPor != null)
-        //    {
-        //        var selectorOrden = Expresiones.Propiedad<TProyeccion>(paginacion.OrdenarPor);
-        //        proyecciones = paginacion.DireccionOrden == DirOrden.Asc
-        //                         ? proyecciones.OrderBy(selectorOrden)
-        //                         : proyecciones.OrderByDescending(selectorOrden);
-        //    }
-
-
-        //    proyecciones = proyecciones.Skip((paginacion.Pagina - 1) * paginacion.ItemsPorPagina).Take(paginacion.ItemsPorPagina);
-
-        //    return new ListaPaginada<TProyeccion>(proyecciones.ToList(), paginacion.Pagina, paginacion.ItemsPorPagina, itemsTotales);
-        //}
-
-        //public ListaPaginada<TEntidad> Listar<TEntidad>(Expression<Func<TEntidad, bool>> condicion, Paginacion paginacion) where TEntidad : class
-        //{
-        //    IQueryable<TEntidad> resultados = Set<TEntidad>();
-        //    if (condicion != null)
-        //    {
-        //        resultados = resultados.Where(condicion);
-        //    }
-
-        //    int itemsTotales = resultados.Count();
-
-        //    if (paginacion.OrdenarPor != null)
-        //    {
-        //        var selectorOrden = Expresiones.Propiedad<TEntidad>(paginacion.OrdenarPor);
-        //        resultados = paginacion.DireccionOrden == DirOrden.Asc
-        //                         ? resultados.OrderBy(selectorOrden)
-        //                         : resultados.OrderByDescending(selectorOrden);
-        //    }
-
-
-        //    resultados = resultados.Skip((paginacion.Pagina - 1) * paginacion.ItemsPorPagina).Take(paginacion.ItemsPorPagina);
-
-        //    return new ListaPaginada<TEntidad>(resultados.ToList(), paginacion.Pagina, paginacion.ItemsPorPagina, itemsTotales);
-        //}
-
-        //public ListaPaginada<TProyeccion> Listar<TEntidad, TProyeccion>(Expression<Func<TEntidad, TProyeccion>> proyeccion, Expression<Func<TEntidad, bool>> filtro, Paginacion paginacion) where TEntidad : class
-        //{
-        //    IQueryable<TEntidad> entidades = Set<TEntidad>();
-        //    if (filtro != null)
-        //    {
-        //        entidades = entidades.Where(filtro);
-        //    }
-        //    var resultados = entidades.Select(proyeccion);
-        //    int itemsTotales = resultados.Count();
-
-        //    if (paginacion.OrdenarPor != null)
-        //    {
-        //        var selectorOrden = Expresiones.Propiedad<TProyeccion>(paginacion.OrdenarPor);
-        //        resultados = paginacion.DireccionOrden == DirOrden.Asc
-        //                         ? resultados.OrderBy(selectorOrden)
-        //                         : resultados.OrderByDescending(selectorOrden);
-        //    }
-
-
-        //    resultados = resultados.Skip((paginacion.Pagina - 1) * paginacion.ItemsPorPagina).Take(paginacion.ItemsPorPagina);
-
-        //    return new ListaPaginada<TProyeccion>(resultados.ToList(), paginacion.Pagina, paginacion.ItemsPorPagina, itemsTotales);
-        //}
-
         public List<TProyeccion> Listar<TEntidad, TProyeccion>(Expression<Func<TEntidad, TProyeccion>> proyeccion, Expression<Func<TEntidad, Boolean>> condicion, int maxResultados) where TEntidad : class
         {
             IQueryable<TEntidad> entidades = Set<TEntidad>();
@@ -231,21 +150,6 @@ namespace Repositorio
             entidades = entidades.Take(maxResultados);
             return entidades.Select(proyeccion).ToList();
         }
-
-        //public ListaPaginada<TEntidad> ListarConsultaPaginada<TEntidad>(IConsultaPaginada<TEntidad> consulta) where TEntidad : class
-        //{
-        //    return consulta.Ejecutar(context);
-        //}
-
-        //public List<TEntidad> ListarConsulta<TEntidad>(IConsulta<TEntidad> consulta) where TEntidad : class
-        //{
-        //    return consulta.Ejecutar(context);
-        //}
-
-        //public TEntidad ObtenerConsultaEscalar<TEntidad>(IConsultaEscalar<TEntidad> consulta)
-        //{
-        //    return consulta.Ejecutar(context);
-        //}
 
         public int Contar<TEntidad>() where TEntidad : class
         {
@@ -278,11 +182,6 @@ namespace Repositorio
             return Set<TEntidad>().Remove(entidad);
         }
 
-        //public void EjecutarComando(IComando comando)
-        //{
-        //    comando.Ejecutar(context);
-        //}
-
         public int GuardarCambios()
         {
             try
@@ -313,6 +212,11 @@ namespace Repositorio
             return code;
         }
 
+        public IList<TEntidad> ListarVista<TEntidad>()
+        {
+            var tabla = typeof(TEntidad).Name;
 
+            return context.Database.SqlQuery<TEntidad>($"SELECT valor,unidad,fecha FROM [dbo].[{tabla}]").ToList();
+        }
     }
 }

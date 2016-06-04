@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dependencias", "Dependencia
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicios", "Servicios\Servicios.csproj", "{C98111FF-FF45-4CC7-8DE0-78D737A7BDF0}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Vistas", "Vistas\Vistas.sqlproj", "{30FE5B46-1C18-4EB3-82E3-39EB9607A1F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C98111FF-FF45-4CC7-8DE0-78D737A7BDF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C98111FF-FF45-4CC7-8DE0-78D737A7BDF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C98111FF-FF45-4CC7-8DE0-78D737A7BDF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30FE5B46-1C18-4EB3-82E3-39EB9607A1F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30FE5B46-1C18-4EB3-82E3-39EB9607A1F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30FE5B46-1C18-4EB3-82E3-39EB9607A1F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30FE5B46-1C18-4EB3-82E3-39EB9607A1F5}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

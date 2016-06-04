@@ -1,4 +1,7 @@
 ﻿using Actualizador;
+using Dominio.Entidades;
+using Dominio.Vistas;
+using Repositorio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,20 +12,22 @@ namespace Web.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
+        private readonly IRepositorio repositorio;
+        public HomeController(IRepositorio repositorio)
         {
+            this.repositorio = repositorio;
         }
 
         public ActionResult Index()
         {
+            ViewBag.Datos = repositorio.ListarVista<IpcDiario>().Cast<Ipc>().ToList();
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult BuscarMaterial(string query)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            
+            return Json(repositorio.Listar<Material>(x => x.Nombre.Contains(query) || x.Marca == query, 20).Select(x => new { x.Nombre, Id = x.Id + "*" + x.Nombre }),JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Contact()
